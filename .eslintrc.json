@@ -35,5 +35,6 @@
                 "alwaysTryTypes": true
             }
         }
-    }
+    },
+    "ignorePatterns": ["webapp/**/*"]
 }

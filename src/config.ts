@@ -8,6 +8,7 @@ export const config = cleanEnv(process.env, {
   }),
   DATABASE_URL: str(),
   REDIS_URL: str(),
+  WEBAPP_URL: str(),
   BOT_SERVER_HOST: str({
     default: "0.0.0.0",
   }),

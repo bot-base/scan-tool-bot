@@ -18,6 +18,7 @@ import {
 import {
   botAdminFeature,
   languageSelectFeature,
+  sendScanResultFeature,
   welcomeFeature,
 } from "@bot/features";
 import { isMultipleLocales } from "@bot/helpers/i18n";
@@ -55,6 +56,7 @@ bot.use(setUser());
 
 bot.use(botAdminFeature);
 bot.use(welcomeFeature);
+bot.use(sendScanResultFeature);
 
 if (isMultipleLocales) {
   bot.use(languageSelectFeature);

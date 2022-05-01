@@ -1,7 +1,7 @@
 {
-  "name": "telegram-bot-template",
+  "name": "scan-tool-bot",
   "version": "0.1.0",
-  "description": "Telegram bot starter template",
+  "description": "Bot for scanning QR codes with a camera",
   "main": "dist/run.js",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
