@@ -11,7 +11,7 @@ feature.on(":web_app_data", async (ctx) => {
   if (ctx.message?.web_app_data.button_text === ctx.t("scan_qr_btn")) {
     return Promise.all([
       ctx.deleteMessage(),
-      ctx.reply(ctx.message?.web_app_data.data),
+      ctx.reply(ctx.message.web_app_data.data),
     ]);
   }
 });
