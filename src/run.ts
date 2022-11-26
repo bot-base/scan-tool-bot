@@ -1,27 +1,38 @@
 import "module-alias/register";
 
-import { bot } from "@bot/bot";
-import { server } from "@bot/server";
-import { prisma } from "@bot/prisma";
-import { config } from "@bot/config";
-import { logger } from "@bot/logger";
-import { loadLocales } from "@bot/helpers/i18n";
-import { handleGracefulShutdown } from "@bot/helpers/graceful-shutdown-handler";
+import { bot } from "~/bot";
+import { server } from "~/server";
+import { prisma } from "~/prisma";
+import { config } from "~/config";
+import { logger } from "~/logger";
 
 // Graceful shutdown
-prisma.$on("beforeExit", handleGracefulShutdown);
+prisma.$on("beforeExit", async () => {
+  logger.info("shutdown");
+
+  await bot.stop();
+  await server.close();
+});
 
 const run = async () => {
-  await loadLocales();
-
   if (config.isProd) {
-    server.listen(config.BOT_SERVER_PORT, config.BOT_SERVER_HOST, () => {
-      bot.api
-        .setWebhook(config.BOT_WEBHOOK, {
-          allowed_updates: config.BOT_ALLOWED_UPDATES,
-        })
-        .catch((err) => logger.error(err));
-    });
+    server.listen(
+      {
+        host: config.BOT_SERVER_HOST,
+        port: config.BOT_SERVER_PORT,
+      },
+      (serverError) => {
+        if (serverError) {
+          logger.error(serverError);
+        } else {
+          bot.api
+            .setWebhook(config.BOT_WEBHOOK, {
+              allowed_updates: config.BOT_ALLOWED_UPDATES,
+            })
+            .catch((err) => logger.error(err));
+        }
+      }
+    );
   } else {
     bot.start({
       allowed_updates: config.BOT_ALLOWED_UPDATES,

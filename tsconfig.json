@@ -3,6 +3,7 @@
     "lib": [
       "esnext"
     ],
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -11,12 +12,12 @@
     "incremental": true,
     "module": "commonjs",
     "target": "es2018",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": "src",
     "paths": {
-      "@bot/*": [
+      "~/*": [
         "*"
       ]
     }

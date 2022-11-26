@@ -1,6 +1,16 @@
 <h1>🤖 <a href="https://t.me/ScanToolBot">Scan Tool Bot</a> - scan a QR code with a camera</h1>
 
----
+## Features
+
+- Config loading and validation
+- Logger
+- Sessions
+- Language picker and internationalization
+- Graceful shutdown
+- Metrics collection (in [prometheus](https://prometheus.io/) format)
+- Fast and low overhead [fastify](https://www.fastify.io/) server
+- Ready-to-use Docker setup
+
 ## Usage
 
 Clone this repo or generate new repo using this template via [link](https://github.com/bot-base/telegram-bot-template/generate)
@@ -96,6 +106,10 @@ cp .example.postgres.env docker-compose.prod.postgres.env
     ```
 
 </details>
+
+## Examples
+
+- [Conversations](https://github.com/bot-base/telegram-bot-template/compare/examples/conversations)
 
 ## Environment variables reference
 
