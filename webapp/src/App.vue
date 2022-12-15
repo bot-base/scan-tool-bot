@@ -13,7 +13,7 @@
 
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount } from "vue";
-import WebApp from "@grammyjs/web-app";
+import { WebApp } from "@grammyjs/web-app";
 import { QrcodeStream } from "vue-qrcode-reader";
 
 const loading = ref(true);

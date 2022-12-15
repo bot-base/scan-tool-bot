@@ -1,14 +1,15 @@
-import 'vuetify/styles'
-import { createApp } from 'vue'
-import { createVuetify } from 'vuetify'
-import App from './App.vue'
+import "vuetify/styles";
+import { createApp } from "vue";
+import { createVuetify } from "vuetify";
 
-const app = createApp(App)
-const vuetify = createVuetify()
+import App from "./App.vue";
+
+const app = createApp(App);
+const vuetify = createVuetify();
 
 if (Object.keys(window.Telegram.WebApp.themeParams).length === 0) {
-    window.location.href = import.meta.env.VITE_BOT_URL
+  window.location.href = import.meta.env.VITE_BOT_URL;
 }
 
-app.use(vuetify)
-app.mount('#app')
+app.use(vuetify);
+app.mount("#app");
