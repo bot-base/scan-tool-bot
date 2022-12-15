@@ -110,6 +110,10 @@ cp .example.postgres.env docker-compose.prod.postgres.env
 ## Examples
 
 - [Conversations](https://github.com/bot-base/telegram-bot-template/compare/examples/conversations)
+  <<<<<<< HEAD
+  =======
+- [Queues](https://github.com/bot-base/telegram-bot-template/compare/examples/queues)
+  > > > > > > > template/main
 
 ## Environment variables reference
 
