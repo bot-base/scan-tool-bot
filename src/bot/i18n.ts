@@ -5,7 +5,6 @@ import type { Context } from "#root/bot/context.js";
 export const i18n = new I18n<Context>({
   defaultLocale: "en",
   directory: path.resolve(process.cwd(), "locales"),
-  useSession: true,
   fluentBundleOptions: {
     useIsolating: false,
   },
