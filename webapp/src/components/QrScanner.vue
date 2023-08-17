@@ -1,6 +1,6 @@
 <template>
-  <MainButton :disabled="loading" :progress="loading" :color="themeParams.secondary_bg_color" text="Open Scanner"
-    @click="openScanner" />
+  <MainButton :disabled="loading" :progress="loading" :color="themeParams.secondary_bg_color"
+    :text-color="themeParams.text_color" text="Open Scanner" @click="openScanner" />
 </template>
 
 <script setup lang="ts">
