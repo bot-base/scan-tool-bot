@@ -4,12 +4,12 @@ import { i18n, isMultipleLocales } from "#root/bot/i18n.js";
 import { config } from "#root/config.js";
 import type { Context } from "#root/bot/context.js";
 
-function getLanguageCommand(localeCode: string): BotCommand {
-  return {
-    command: "language",
-    description: i18n.t(localeCode, "language_command.description"),
-  };
-}
+// function getLanguageCommand(localeCode: string): BotCommand {
+//   return {
+//     command: "language",
+//     description: i18n.t(localeCode, "language_command.description"),
+//   };
+// }
 
 function getPrivateChatCommands(localeCode: string): BotCommand[] {
   return [
@@ -41,7 +41,7 @@ export async function setCommandsHandler(ctx: CommandContext<Context>) {
   await ctx.api.setMyCommands(
     [
       ...getPrivateChatCommands(DEFAULT_LANGUAGE_CODE),
-      ...(isMultipleLocales ? [getLanguageCommand(DEFAULT_LANGUAGE_CODE)] : []),
+      // ...(isMultipleLocales ? [getLanguageCommand(DEFAULT_LANGUAGE_CODE)] : []),
     ],
     {
       scope: {
@@ -55,9 +55,9 @@ export async function setCommandsHandler(ctx: CommandContext<Context>) {
       ctx.api.setMyCommands(
         [
           ...getPrivateChatCommands(code),
-          ...(isMultipleLocales
-            ? [getLanguageCommand(DEFAULT_LANGUAGE_CODE)]
-            : []),
+          // ...(isMultipleLocales
+          //   ? [getLanguageCommand(DEFAULT_LANGUAGE_CODE)]
+          //   : []),
         ],
         {
           language_code: code,
@@ -96,7 +96,7 @@ export async function setCommandsHandler(ctx: CommandContext<Context>) {
     [
       ...getPrivateChatCommands(DEFAULT_LANGUAGE_CODE),
       ...getPrivateChatAdminCommands(DEFAULT_LANGUAGE_CODE),
-      ...(isMultipleLocales ? [getLanguageCommand(DEFAULT_LANGUAGE_CODE)] : []),
+      // ...(isMultipleLocales ? [getLanguageCommand(DEFAULT_LANGUAGE_CODE)] : []),
     ],
     {
       scope: {
