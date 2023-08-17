@@ -1,6 +1,6 @@
 <template>
   <MainButton :disabled="loading" :progress="loading" :color="themeParams.secondary_bg_color"
-    :text-color="themeParams.text_color" text="Open Scanner" @click="openScanner" />
+    :text-color="themeParams.text_color" :text="messages.qrScanner.openScanner" @click="openScanner" />
 </template>
 
 <script setup lang="ts">
@@ -11,6 +11,7 @@ import {
   useWebAppTheme,
   useWebAppHapticFeedback,
 } from 'vue-tg';
+import { useI18n } from '../composable/useI18n.ts'
 
 const result = defineModel()
 const loading = ref(false);
@@ -19,6 +20,7 @@ const { impactOccurred } = useWebAppHapticFeedback();
 const { onQrTextReceived, showScanQrPopup, closeScanQrPopup } =
   useWebAppQrScanner();
 const { themeParams } = useWebAppTheme()
+const { messages } = useI18n()
 
 function openScanner() {
   loading.value = true;

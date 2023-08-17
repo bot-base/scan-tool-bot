@@ -1,0 +1,20 @@
+start_command = 
+    .description = Запустити бота
+language_command = 
+    .description = Змінити мову
+setcommands_command =
+    .description = Налаштувати команди бота
+
+welcome = 
+    .message = Вітаю!
+    .scan_qr_button = Сканувати QR
+    .generate_qr_button = Створити QR
+inline_mode =
+    .scan_qr_button = Відкрити QR-сканер
+    .result_label = Надіслати результат
+language = 
+    .select = Будь ласка, оберіть вашу мову
+    .changed = Мова успішно змінена!
+admin =
+    .commands-updated = Команди оновлено.
+unhandled = Невідома команда. Спробуйте /start

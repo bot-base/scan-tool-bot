@@ -4,7 +4,6 @@ language_command =
     .description = Change language
 setcommands_command =
     .description = Set bot commands
-menu_button = Scan QR
 
 welcome = 
     .message = Welcome!

@@ -10,12 +10,19 @@ import { ref, watch } from 'vue';
 import { useWebApp, useWebAppTheme, useWebAppClosingConfirmation } from 'vue-tg';
 import QrScanner from './components/QrScanner.vue'
 import ScanResult from './components/ScanResult.vue'
+import { useI18n } from './composable/useI18n.ts'
 
 const result = ref()
 
 const { ready } = useWebApp()
 const { onThemeChanged, colorScheme } = useWebAppTheme()
 const { enableClosingConfirmation } = useWebAppClosingConfirmation()
+const { changeLocale } = useI18n()
+
+function setLocale() {
+  const browserLanguageCode = navigator.language.slice(0, 2).toLowerCase()
+  changeLocale(browserLanguageCode)
+}
 
 function updateTheme() {
   document.documentElement.setAttribute('data-theme', colorScheme.value)
@@ -24,6 +31,7 @@ function updateTheme() {
 watch(result, () => enableClosingConfirmation())
 onThemeChanged(updateTheme)
 
+setLocale()
 updateTheme()
 ready()
 </script>

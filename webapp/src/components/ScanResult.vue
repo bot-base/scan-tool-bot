@@ -4,13 +4,13 @@
         <div v-if="isValidLink">
             <button class="outline" @click="handleOpenLinkButton">
                 <linkIcon class="icon" />
-                Open link
+                {{ messages.scanResult.openLink }}
             </button>
         </div>
         <div>
             <button @click="handleSendButton">
                 <tgIcon class="icon" />
-                Send
+                {{ messages.scanResult.send }}
             </button>
         </div>
     </div>
@@ -22,11 +22,13 @@ import { useWebAppNavigation } from 'vue-tg';
 import { isValidUrl } from '../helpers/url.ts';
 import linkIcon from '../assets/link.svg'
 import tgIcon from '../assets/telegram.svg'
+import { useI18n } from '../composable/useI18n';
 
 const props = defineProps<{ value: string }>();
 const isValidLink = computed(() => isValidUrl(props.value))
 
 const { openLink, switchInlineQuery } = useWebAppNavigation()
+const { messages } = useI18n()
 
 function handleOpenLinkButton() {
     openLink(props.value, {
