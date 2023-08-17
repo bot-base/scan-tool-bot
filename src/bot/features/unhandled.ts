@@ -6,6 +6,13 @@ const composer = new Composer<Context>();
 
 const feature = composer.chatType("private");
 
+// ignore message when user generates QR code in chat with bot
+feature.on("message").filter(
+  (ctx) => ctx.message?.via_bot?.id === ctx.me.id,
+  logHandle("via-bot-ignore"),
+  () => {},
+);
+
 feature.on("message", logHandle("unhandled-message"), (ctx) => {
   return ctx.reply(ctx.t("unhandled"));
 });
