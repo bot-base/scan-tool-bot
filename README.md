@@ -1,32 +1,28 @@
-<h1 align="center">🤖 Telegram Bot Template</h1>
+<h1 align="center">🤖 Scan Tool Bot</h1>
 
-<img align="right" width="35%" src="https://github.com/bot-base/telegram-bot-template/assets/26162440/c4371683-3e99-4b1c-ae8e-11ccbea78f4b">
+<img align="right" width="35%" src="https://github.com/bot-base/scan-tool-bot/assets/26162440/92e1e035-a3d7-4f0f-b5f8-0c40f96a60ec">
 
-Bot starter template based on [grammY](https://grammy.dev/) bot framework.  
+<p align="center">
+<a href="https://t.me/ScanToolBot">Open in Telegram</a>
+<br/> or 
+<br/>
+just type <code>@ScanToolBot</code> in message input field
+
+</p>
 
 ## Features
 
-- Scalable structure
-- Config loading and validation
-- Internationalization, language changing
-- Graceful shutdown
-- Logger (powered by [pino](https://github.com/pinojs/pino))
-- Fast and low overhead server (powered by [fastify](https://github.com/fastify/fastify))
-- Ready-to-use deployment setups:
-    - [Docker](#docker-dockercom)
-    - [Vercel](#vercel-vercelcom)
-- Examples:
-    - [Prisma ORM](#prisma-orm-prismaio)
-    - grammY plugins:
-        - [Conversations](#grammy-conversations-grammydevpluginsconversations)
-        - [Runner](#grammy-runner-grammydevpluginsrunner)
-    - Web Apps:
-        - [Vanilla](#web-app-vite-typescript) (No frameworks)
-        - [Vue](#web-app-with-vue-vue-vite-typescript)
+- Scan QR codes with a camera
+- Generate QR codes
+- Works in any chat via inline mode
 
-## Usage
+## Launch
 
-1. [Create a new repository](https://github.com/bot-base/telegram-bot-template/generate) using this template.
+1.  Close repository:
+
+```sh
+git clone git@github.com:bot-base/scan-tool-bot.git
+```
 
 2.  Create an environment variables file:
 
@@ -34,16 +30,20 @@ Bot starter template based on [grammY](https://grammy.dev/) bot framework.
 cp .env.example .env
 ```
 
-3.  Set BOT_TOKEN [environment variable](#environment-variables) in `.env` file.
+3.  Launch web app following the instructions in [webapp/README.md](webapp/README.md).
 
+4.  Set BOT_TOKEN, WEBAPP_URL, API_URL [environment variables](#environment-variables) in `.env` file.
 
-4.  Launch bot
+5.  Launch bot
 
     Development mode:
 
     ```bash
     # 1. Install dependencies
     npm i
+
+    # 2. Set BOT_SERVER_HOST to localhost
+    # Set BOT_SERVER_PORT to any available port
 
     # 2. Run bot (in watch mode)
     npm run dev
@@ -55,7 +55,8 @@ cp .env.example .env
     # 1. Install dependencies
     npm i --only=prod
 
-    # 2. Set NODE_ENV to production and change BOT_WEBHOOK to the actual URL to receive updates
+    # 2. Set NODE_ENV to production
+    # Change BOT_WEBHOOK to the actual URL to receive updates
 
     # 3. Run bot
     npm start 
@@ -71,157 +72,6 @@ cp .env.example .env
 - `npm run start` — Starts the bot.
 - `npm run start:force` — Starts the bot without type checking.
 
-## Deploy
-
-### Docker ([docker.com](https://docker.com))
-
-Branch:
-[deploy/docker-compose](https://github.com/bot-base/telegram-bot-template/tree/deploy/docker-compose) 
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/deploy/docker-compose))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge deployment setup
-
-```sh
-git merge template/deploy/docker-compose -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-### Vercel ([vercel.com](https://vercel.com))
-
-Branch:
-[deploy/vercel](https://github.com/bot-base/telegram-bot-template/tree/deploy/vercel) 
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/deploy/vercel))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge deployment setup
-
-```sh
-git merge template/deploy/vercel -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-## Examples
-
-### Prisma ORM ([prisma.io](https://prisma.io))
-
-Branch:
-[example/orm-prisma](https://github.com/bot-base/telegram-bot-template/tree/example/orm-prisma) 
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/orm-prisma))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/orm-prisma -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-### grammY conversations ([grammy.dev/plugins/conversations](https://grammy.dev/plugins/conversations))
-
-Branch:
-[example/plugin-conversations](https://github.com/bot-base/telegram-bot-template/tree/example/plugin-conversations) 
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/plugin-conversations))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/plugin-conversations -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-### grammY runner ([grammy.dev/plugins/runner](https://grammy.dev/plugins/runner))
-
-Branch:
-[example/plugin-runner](https://github.com/bot-base/telegram-bot-template/tree/example/plugin-runner) 
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/plugin-runner))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/plugin-runner -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-### Web App ([Vite](https://vitejs.dev), TypeScript)
-
-Branch:
-[example/webapp](https://github.com/bot-base/telegram-bot-template/tree/example/webapp) 
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/webapp))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/webapp -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-### Web App with Vue ([Vue](https://vuejs.org), [Vite](https://vitejs.dev), TypeScript)
-
-Branch:
-[example/webapp-vue](https://github.com/bot-base/telegram-bot-template/tree/example/webapp-vue) 
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/webapp-vue))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/webapp-vue -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
 ## Environment Variables
 
 | Variable            | Description                                                                                                                                               |
@@ -234,3 +84,5 @@ git merge template/example/webapp-vue -X theirs --squash --no-commit --allow-unr
 | BOT_TOKEN           | Token, get it from [@BotFather](https://t.me/BotFather)                                                                                                   |
 | BOT_WEBHOOK         | <details><summary>Webhook endpoint</summary>Will be used to setup webhook in production mode.</details>                                                        |
 | BOT_ADMIN_USER_ID   | <details><summary>Administrator user ID</summary>Commands, such as `/setcommands`, will only be available to the user with this ID.</details> |
+| WEBAPP_URL          | HTTPS link to web app |
+| API_URL          | `/api` endpoint (must be public and available to Telegram) |

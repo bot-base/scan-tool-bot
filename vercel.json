@@ -1,0 +1,9 @@
+{
+    "outputDirectory": "build",
+    "routes": [
+        {
+            "src": "/.*",
+            "dest": "/api/server.ts"
+        }
+    ]
+}

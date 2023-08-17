@@ -28,6 +28,8 @@ const configSchema = z.object({
   BOT_TOKEN: z.string(),
   BOT_WEBHOOK: z.string().url(),
   BOT_ADMIN_USER_ID: z.coerce.number().finite(),
+  WEBAPP_URL: z.string().url(),
+  API_URL: z.string().url(),
 });
 
 const parseConfig = (environment: NodeJS.ProcessEnv) => {

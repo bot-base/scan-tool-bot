@@ -18,14 +18,14 @@ try {
     await bot.stop();
   });
 
+  await server.listen({
+    host: config.BOT_SERVER_HOST,
+    port: config.BOT_SERVER_PORT,
+  });
+
   if (config.isProd) {
     // to prevent receiving updates before the bot is ready
     await bot.init();
-
-    await server.listen({
-      host: config.BOT_SERVER_HOST,
-      port: config.BOT_SERVER_PORT,
-    });
 
     await bot.api.setWebhook(config.BOT_WEBHOOK, {
       allowed_updates: config.BOT_ALLOWED_UPDATES,

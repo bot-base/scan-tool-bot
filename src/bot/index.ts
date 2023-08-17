@@ -1,14 +1,11 @@
 import { autoChatAction } from "@grammyjs/auto-chat-action";
 import { hydrate } from "@grammyjs/hydrate";
 import { hydrateReply, parseMode } from "@grammyjs/parse-mode";
-import { BotConfig, StorageAdapter, Bot as TelegramBot, session } from "grammy";
-import {
-  Context,
-  SessionData,
-  createContextConstructor,
-} from "#root/bot/context.js";
+import { BotConfig, Bot as TelegramBot } from "grammy";
+import { Context, createContextConstructor } from "#root/bot/context.js";
 import {
   botAdminFeature,
+  inlineModeFeature,
   languageFeature,
   unhandledFeature,
   welcomeFeature,
@@ -20,12 +17,10 @@ import { config } from "#root/config.js";
 import { logger } from "#root/logger.js";
 
 type Options = {
-  sessionStorage?: StorageAdapter<SessionData>;
   config?: Omit<BotConfig<Context>, "ContextConstructor">;
 };
 
 export function createBot(token: string, options: Options = {}) {
-  const { sessionStorage } = options;
   const bot = new TelegramBot(token, {
     ...options.config,
     ContextConstructor: createContextConstructor({ logger }),
@@ -41,17 +36,12 @@ export function createBot(token: string, options: Options = {}) {
   bot.use(autoChatAction(bot.api));
   bot.use(hydrateReply);
   bot.use(hydrate());
-  bot.use(
-    session({
-      initial: () => ({}),
-      storage: sessionStorage,
-    }),
-  );
   bot.use(i18n);
 
   // Handlers
   bot.use(welcomeFeature);
   bot.use(botAdminFeature);
+  bot.use(inlineModeFeature);
 
   if (isMultipleLocales) {
     bot.use(languageFeature);
